@@ -11,7 +11,8 @@ const branch =
 export default defineConfig({
   branch,
   // Se obtienen en app.tina.io al conectar el repositorio (ver README).
-  clientId: process.env.PUBLIC_TINA_CLIENT_ID || null,
+  // El Client ID es público (va en el navegador); el token sí es secreto y solo va en el hosting.
+  clientId: process.env.PUBLIC_TINA_CLIENT_ID || '26aad0ef-efb1-4a01-83f9-7d11a43149bb',
   token: process.env.TINA_TOKEN || null,
 
   build: {
