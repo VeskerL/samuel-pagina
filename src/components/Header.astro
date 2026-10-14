@@ -1,0 +1,48 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { GlobalQuery } from '../../tina/__generated__/types';
+import { href, img, list } from '../lib/utils';
+
+interface Props {
+  data: GlobalQuery['global'] | null;
+  pathname: string;
+  theme?: string;
+}
+const { data, pathname, theme = 'light' } = Astro.props;
+const brand = data?.brand;
+const header = data?.header;
+const nav = list(header?.nav);
+const clean = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+const current = clean(pathname);
+const isOn = (link: string) => {
+  const target = clean(href(link));
+  return target === '/' ? current === '/' : current === target || current.startsWith(target + '/');
+};
+---
+<header class:list={['nav', theme === 'dark' && 'nav--dark']}>
+  <div class="wrap nav__in">
+    <a class="brand" href="/" data-tina-field={brand ? tinaField(brand) : undefined}>
+      {img(brand?.logo) && <img src={img(brand?.logo)} alt="" width="34" height="38" />}
+      <span>
+        <b data-tina-field={brand ? tinaField(brand, 'name') : undefined}>{brand?.name}</b>
+        <small data-tina-field={brand ? tinaField(brand, 'tagline') : undefined}>{brand?.tagline}</small>
+      </span>
+    </a>
+    <button type="button" class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal" data-nav-toggle>
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+    </button>
+      <nav class="nav__links" id="menu-principal" aria-label="Principal" data-tina-field={header ? tinaField(header, 'nav') : undefined}>
+        {nav.map((link, i) => (
+          <a
+            href={href(link.href)}
+            class:list={[isOn(link.href ?? '') && 'is-on']}
+            aria-current={isOn(link.href ?? '') ? 'page' : undefined}
+            data-tina-field={tinaField(link, 'label')}
+          >{link.label}</a>
+        ))}
+        {header?.cta?.label && (
+          <a class:list={['btn btn--sm', theme === 'dark' ? 'btn--yellow' : 'btn--dark']} href={href(header.cta.href)} data-tina-field={tinaField(header, 'cta')}>{header.cta.label}</a>
+        )}
+      </nav>
+  </div>
+</header>

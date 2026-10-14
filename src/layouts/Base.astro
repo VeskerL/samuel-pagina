@@ -1,0 +1,59 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { getGlobal } from '../lib/data';
+import { islands } from '../lib/islands';
+import '../styles/global.css';
+
+interface Props {
+  title?: string | null;
+  description?: string | null;
+  /** 'dark' para páginas con portada azul. */
+  theme?: 'light' | 'dark';
+  /** Sin pie de página (cuestionario). */
+  minimal?: boolean;
+}
+const { title, description, theme = 'light', minimal = false } = Astro.props;
+const global = await getGlobal();
+const g = global.data.global;
+const path = Astro.url.pathname;
+const pageTitle = title || g?.brand?.name || 'Dr. Samuel Herrera';
+const canonical = new URL(path, Astro.site).toString();
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta name="theme-color" content="#002C45" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
+  </head>
+  <body class:list={[minimal && 'is-minimal']}>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <TinaIsland name="header" wrapper={islands.header.wrapper} params={{ path, theme }}>
+      <Header data={g ?? null} pathname={path} theme={theme} />
+    </TinaIsland>
+    <div id="contenido">
+      <slot />
+    </div>
+    {!minimal && (
+      <TinaIsland name="footer" wrapper={islands.footer.wrapper}>
+        <Footer data={g ?? null} />
+      </TinaIsland>
+    )}
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

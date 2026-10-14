@@ -1,0 +1,44 @@
+{
+  "brand": {
+    "logo": "/uploads/logo-simbolo.png",
+    "name": "Dr. Samuel Herrera",
+    "tagline": "Nutriólogo clínico"
+  },
+  "header": {
+    "nav": [
+      { "label": "Inicio", "href": "/" },
+      { "label": "Servicios", "href": "/servicios" },
+      { "label": "Programa bariátrico", "href": "/programa-bariatrico" },
+      { "label": "Blog", "href": "/blog" },
+      { "label": "Guía Nutrium", "href": "/guia-nutrium" }
+    ],
+    "cta": { "label": "Agendar valoración", "href": "/evalua-tu-caso" }
+  },
+  "contact": {
+    "whatsappLabel": "WhatsApp [NÚMERO]",
+    "whatsappUrl": "#",
+    "email": "contacto@samuelherreranutriologo.com",
+    "nutriumBookingUrl": "#",
+    "address": "Centro Oncológico de Antioquia\nTorre Médica Consultorios del Sur\nEnvigado, Antioquia",
+    "modality": "Presencial y virtual",
+    "social": [
+      { "label": "Instagram", "url": "#" },
+      { "label": "TikTok", "url": "#" },
+      { "label": "LinkedIn", "url": "#" }
+    ]
+  },
+  "footer": {
+    "statement": "Nutrición médica de precisión, humana y basada en evidencia.",
+    "links": [
+      { "label": "Servicios y planes", "href": "/servicios" },
+      { "label": "Programa bariátrico", "href": "/programa-bariatrico" },
+      { "label": "Blog", "href": "/blog" },
+      { "label": "Guía Nutrium", "href": "/guia-nutrium" }
+    ],
+    "legal": [
+      { "label": "Política de tratamiento de datos", "href": "#" },
+      { "label": "Términos", "href": "#" }
+    ],
+    "copyright": "© 2026 Dr. Samuel Herrera · Nutriólogo Clínico"
+  }
+}

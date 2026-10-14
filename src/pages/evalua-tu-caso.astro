@@ -1,0 +1,15 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import CuestionarioBody from '../components/pages/CuestionarioBody.astro';
+import Base from '../layouts/Base.astro';
+import { getCuestionario } from '../lib/data';
+import { islands } from '../lib/islands';
+
+const page = await getCuestionario();
+const data = page.data.cuestionario;
+---
+<Base title={data.seo?.title} description={data.seo?.description} minimal>
+  <TinaIsland name="cuestionario" wrapper={islands.cuestionario.wrapper} primary>
+    <CuestionarioBody data={data} />
+  </TinaIsland>
+</Base>

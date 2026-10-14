@@ -1,0 +1,133 @@
+{
+  "seo": {
+    "title": "Dr. Samuel Herrera · Nutriólogo clínico en Medellín y Envigado",
+    "description": "Nutrición médica de precisión para salud digestiva, peso y metabolismo. Consulta presencial en Envigado y virtual."
+  },
+  "hero": {
+    "eyebrow": "Nutriólogo clínico · Medellín",
+    "title": "Nutrición médica\nde precisión.",
+    "subtitle": "Digestión, peso y metabolismo tratados desde la causa. Con diagnóstico, medición y un plan que sí puedes sostener.",
+    "primary": { "label": "Agendar valoración", "href": "/evalua-tu-caso" },
+    "secondary": { "label": "Haz el test de 2 minutos ›", "href": "/evalua-tu-caso" },
+    "image": "/uploads/doctor-recorte.png",
+    "imageAlt": "Dr. Samuel Herrera con bata azul y fonendoscopio",
+    "chipsLeft": ["Bioimpedancia InBody 580", "Ecografía nutricional"],
+    "chipsRight": ["Tu plan en la app Nutrium", "Seguimiento con el doctor"]
+  },
+  "areasHead": {
+    "eyebrow": "Lo que tratamos",
+    "title": "Tratamos la causa.\nNo solo el síntoma.",
+    "subtitle": ""
+  },
+  "areas": [
+    {
+      "label": "Salud digestiva",
+      "kicker": "Gastritis · reflujo · colon irritable · hinchazón",
+      "title": "Que te arda no es un diagnóstico.",
+      "body": "Ardor, llenura, gases o dolor que van y vienen. Antes de bajar el ácido o quitar alimentos buscamos qué lo causa: dispepsia funcional, reflujo, Helicobacter, sobrecrecimiento bacteriano o la vesícula. Cada una se trata distinto.",
+      "points": [
+        "Revisión de tus estudios previos: endoscopia, biopsia, laboratorios",
+        "Plan alimentario por fases, sin dietas eternas de exclusión",
+        "Trabajo conjunto con gastroenterología cuando hace falta"
+      ],
+      "cta": { "label": "Ver consulta digestiva", "href": "/servicios" }
+    },
+    {
+      "label": "Peso y obesidad",
+      "kicker": "Perder grasa sin perder músculo",
+      "title": "Lo primero no es cuánto pesas.",
+      "body": "Revisamos qué hay además del peso: glucosa, hígado, presión y composición corporal. Si un medicamento tiene sentido, se formula con entrenamiento de fuerza, proteína suficiente y una salida definida desde el día uno.",
+      "points": [
+        "Composición corporal con bioimpedancia médica",
+        "Plan de fuerza y proteína para cuidar el músculo",
+        "Criterios claros para usar (o no) medicamentos"
+      ],
+      "cta": { "label": "Ver planes", "href": "/servicios" }
+    },
+    {
+      "label": "Salud metabólica",
+      "kicker": "Hígado graso · resistencia a la insulina · colesterol",
+      "title": "El hígado no duele.",
+      "body": "El hígado graso es la enfermedad hepática más frecuente y puede pasar años sin un solo síntoma. En etapas tempranas se revierte. Por eso a este órgano no se le espera: se le revisa.",
+      "points": [
+        "Lectura completa de laboratorios y ecografía",
+        "Abordaje conjunto de glucosa, lípidos y presión",
+        "Metas medibles en cada control"
+      ],
+      "cta": { "label": "Ver servicio", "href": "/servicios" }
+    },
+    {
+      "label": "Perimenopausia",
+      "kicker": "Peso, sueño y energía entre los 40 y los 60",
+      "title": "Tu cuerpo cambió. Tu plan también debe hacerlo.",
+      "body": "En esta etapa cambia cómo se guarda la grasa, cómo se duerme y cómo se gana músculo. Ajustamos alimentación, fuerza y descanso con mediciones reales, no solo con la báscula.",
+      "points": [
+        "Composición corporal y fuerza como punto de partida",
+        "Plan pensado para el sueño y el apetito de esta etapa",
+        "Seguimiento cercano en Nutrium"
+      ],
+      "cta": { "label": "Ver planes", "href": "/servicios" }
+    },
+    {
+      "label": "Paciente bariátrico",
+      "kicker": "Balón, sutura endoscópica o cirugía",
+      "title": "El procedimiento es un día. El resultado son doce meses.",
+      "body": "Preparación antes del procedimiento, progresión de la dieta y seguimiento médico-nutricional para cuidar el músculo, evitar deficiencias y sostener el resultado.",
+      "points": [
+        "Alianza con gastroenterología y cirugía bariátrica",
+        "Controles cada 8 semanas durante el programa",
+        "Prevención de pérdida de músculo y deficiencias"
+      ],
+      "cta": { "label": "Ver programa bariátrico", "href": "/programa-bariatrico" }
+    },
+    {
+      "label": "Composición corporal",
+      "kicker": "Deportistas y personas activas",
+      "title": "Kilos no es lo mismo que progreso.",
+      "body": "Bioimpedancia médica y cineantropometría para saber qué cambia de verdad: músculo, grasa y agua. Ajustamos energía y proteína a tu entrenamiento.",
+      "points": [
+        "InBody 580, adipómetro y dinamómetro",
+        "Plan según tu carga de entrenamiento",
+        "Medición en cada control para ajustar"
+      ],
+      "cta": { "label": "Ver servicio", "href": "/servicios" }
+    }
+  ],
+  "stepsHead": {
+    "eyebrow": "Tu primera consulta",
+    "title": "Una hora para\nentender tu caso.",
+    "subtitle": "No llegas con nada resuelto. Esa es nuestra parte."
+  },
+  "steps": [
+    { "title": "Conversamos", "body": "Cómo es tu día, cómo duermes, cuánto te mueves y qué has intentado antes. Sin juicio." },
+    { "title": "Medimos", "body": "Examen físico, bioimpedancia InBody 580, cineantropometría, fuerza y ecografía nutricional." },
+    { "title": "Decidimos", "body": "Sales con dos o tres cambios concretos, escogidos porque son los que sí puedes sostener." },
+    { "title": "Acompañamos", "body": "Tu plan vive en Nutrium y se ajusta según tu evolución, con contacto directo con el doctor." }
+  ],
+  "quote": {
+    "eyebrow": "Lo que creemos",
+    "text": "Si llevas años con el mismo problema y el mismo tratamiento, el problema no eres tú. Es el diagnóstico.",
+    "author": "Dr. Samuel Herrera · Médico y nutriólogo clínico",
+    "image": "/uploads/consulta.jpg",
+    "imageAlt": "El doctor conversa con una paciente en el consultorio"
+  },
+  "nutrium": {
+    "eyebrow": "App Nutrium",
+    "title": "Tu plan,\nen tu bolsillo.",
+    "subtitle": "Menús, registros, metas y mensajes con el doctor en una sola app. Ahí también agendas tus controles.",
+    "primary": { "label": "Ver la guía de Nutrium", "href": "/guia-nutrium" },
+    "secondary": { "label": "Agendar en Nutrium ›", "href": "#" }
+  },
+  "blog": {
+    "eyebrow": "Blog · Consulta abierta",
+    "title": "Escúchalo. O léelo.",
+    "subtitle": "El doctor responde en voz alta las preguntas que más escucha en consulta.",
+    "linkLabel": "Ver todos los episodios ›"
+  },
+  "ctaBand": {
+    "eyebrow": "",
+    "title": "¿No sabes por dónde empezar?",
+    "subtitle": "Responde siete preguntas, una por pantalla. Te enviamos una guía según tu caso y te decimos qué se estudia primero.",
+    "button": { "label": "Empezar el test", "href": "/evalua-tu-caso" }
+  }
+}

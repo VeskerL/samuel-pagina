@@ -1,0 +1,21 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import PostBody from '../../components/pages/PostBody.astro';
+import Base from '../../layouts/Base.astro';
+import { getPost, getPosts } from '../../lib/data';
+import { islands } from '../../lib/islands';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((p) => ({ params: { slug: p._sys.filename } }));
+}
+
+const slug = String(Astro.params.slug ?? '');
+const post = await getPost(slug);
+const data = post.data.post;
+---
+<Base title={`${data.title} · Consulta abierta`} description={data.excerpt}>
+  <TinaIsland name="post" wrapper={islands.post.wrapper} params={{ slug }} primary>
+    <PostBody data={data} />
+  </TinaIsland>
+</Base>

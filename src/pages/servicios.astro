@@ -1,0 +1,15 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import ServiciosBody from '../components/pages/ServiciosBody.astro';
+import Base from '../layouts/Base.astro';
+import { getServicios } from '../lib/data';
+import { islands } from '../lib/islands';
+
+const page = await getServicios();
+const data = page.data.servicios;
+---
+<Base title={data.seo?.title} description={data.seo?.description}>
+  <TinaIsland name="servicios" wrapper={islands.servicios.wrapper} primary>
+    <ServiciosBody data={data} />
+  </TinaIsland>
+</Base>

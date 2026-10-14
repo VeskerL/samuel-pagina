@@ -1,0 +1,148 @@
+{
+  "seo": {
+    "title": "Evalúa tu caso · Dr. Samuel Herrera",
+    "description": "Responde siete preguntas y recibe una guía según tu caso, con lo que se estudia primero."
+  },
+  "intro": {
+    "eyebrow": "Evalúa tu caso · 2 minutos",
+    "title": "Antes de tu consulta, cuéntanos qué te pasa.",
+    "body": "Siete preguntas, una por pantalla. Al final te mostramos qué se estudia primero en tu caso y te enviamos una guía para leer con calma.",
+    "bullets": ["No reemplaza una consulta médica.", "Tus respuestas solo las ve el equipo del doctor."],
+    "startLabel": "Empezar"
+  },
+  "questions": [
+    {
+      "key": "motivo",
+      "title": "¿Qué te trae a consulta?",
+      "hint": "Elige lo que más te preocupa hoy.",
+      "multiple": false,
+      "options": [
+        { "value": "digestivo", "label": "Molestias digestivas", "sub": "Ardor, gastritis, reflujo, hinchazón, colon", "exclusive": false, "alarm": false },
+        { "value": "peso", "label": "Bajar de peso", "sub": "Sin perder músculo y sin rebote", "exclusive": false, "alarm": false },
+        { "value": "metabolico", "label": "Mis exámenes salieron alterados", "sub": "Hígado graso, glucosa, colesterol", "exclusive": false, "alarm": false },
+        { "value": "peri", "label": "Cambios con la perimenopausia", "sub": "Peso, sueño, energía", "exclusive": false, "alarm": false },
+        { "value": "bariatrico", "label": "Procedimiento bariátrico", "sub": "Balón, sutura o cirugía", "exclusive": false, "alarm": false },
+        { "value": "rendimiento", "label": "Composición corporal o deporte", "sub": "Músculo, grasa y rendimiento", "exclusive": false, "alarm": false }
+      ]
+    },
+    {
+      "key": "tiempo",
+      "title": "¿Hace cuánto te pasa?",
+      "hint": "Una idea aproximada es suficiente.",
+      "multiple": false,
+      "options": [
+        { "value": "t1", "label": "Menos de 3 meses", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "t2", "label": "Entre 3 y 12 meses", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "t3", "label": "Entre 1 y 3 años", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "t4", "label": "Más de 3 años", "sub": "", "exclusive": false, "alarm": false }
+      ]
+    },
+    {
+      "key": "sintomas",
+      "title": "¿Cuáles de estas cosas sientes?",
+      "hint": "Marca todas las que apliquen.",
+      "multiple": true,
+      "options": [
+        { "value": "ardor", "label": "Ardor o acidez", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "hinchazon", "label": "Hinchazón o gases", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "llenura", "label": "Me lleno muy rápido", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "transito", "label": "Estreñimiento o diarrea", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "cansancio", "label": "Cansancio constante", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "ansiedad", "label": "Ansiedad por comer", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "sueno", "label": "Duermo mal o me despierto en la noche", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "alarma1", "label": "Sangrado digestivo, vómito con sangre o heces negras", "sub": "", "exclusive": false, "alarm": true },
+        { "value": "alarma2", "label": "Pérdida de peso sin buscarla", "sub": "", "exclusive": false, "alarm": true },
+        { "value": "ninguno", "label": "Ninguno de estos", "sub": "", "exclusive": true, "alarm": false }
+      ]
+    },
+    {
+      "key": "dx",
+      "title": "¿Ya te dieron un diagnóstico?",
+      "hint": "Sin juicio: es para saber desde dónde partimos.",
+      "multiple": false,
+      "options": [
+        { "value": "dx1", "label": "Sí, con exámenes", "sub": "Endoscopia, biopsia, laboratorios o ecografía", "exclusive": false, "alarm": false },
+        { "value": "dx2", "label": "Me lo dijeron, pero sin exámenes", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "dx3", "label": "No, nunca me han estudiado", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "dx4", "label": "No estoy seguro", "sub": "", "exclusive": false, "alarm": false }
+      ]
+    },
+    {
+      "key": "intentos",
+      "title": "¿Qué has intentado hasta ahora?",
+      "hint": "Marca todo lo que hayas probado.",
+      "multiple": true,
+      "options": [
+        { "value": "dietas", "label": "Dietas por mi cuenta", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "prof", "label": "Nutricionista o médico", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "meds", "label": "Medicamentos", "sub": "Omeprazol, para bajar de peso u otros", "exclusive": false, "alarm": false },
+        { "value": "supl", "label": "Suplementos o “detox”", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "nada", "label": "Nada todavía", "sub": "", "exclusive": true, "alarm": false }
+      ]
+    },
+    {
+      "key": "meta",
+      "title": "¿Qué te gustaría lograr primero?",
+      "hint": "Lo más importante para ti en los próximos meses.",
+      "multiple": false,
+      "options": [
+        { "value": "entender", "label": "Entender qué tengo", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "bajar", "label": "Bajar de peso sin perder músculo", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "comer", "label": "Dejar de sentirme mal después de comer", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "examenes", "label": "Mejorar mis exámenes", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "preparar", "label": "Prepararme para un procedimiento", "sub": "", "exclusive": false, "alarm": false }
+      ]
+    },
+    {
+      "key": "modalidad",
+      "title": "¿Cómo prefieres tu consulta?",
+      "hint": "Puedes cambiarlo después.",
+      "multiple": false,
+      "options": [
+        { "value": "presencial", "label": "Presencial en Envigado", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "virtual", "label": "Virtual", "sub": "", "exclusive": false, "alarm": false },
+        { "value": "igual", "label": "Me da igual", "sub": "", "exclusive": false, "alarm": false }
+      ]
+    }
+  ],
+  "contact": {
+    "eyebrow": "Último paso",
+    "title": "¿A dónde te enviamos tu guía?",
+    "body": "Con esto te mandamos el documento y, si quieres, Valentina te ayuda a agendar.",
+    "consent": "Autorizo el tratamiento de mis datos personales y de salud para recibir la guía y ser contactado, según la Política de tratamiento de datos (Ley 1581 de 2012).",
+    "submitLabel": "Ver mi resultado",
+    "helper": "Necesitamos tu nombre, un medio de contacto y tu autorización.",
+    "webhookUrl": ""
+  },
+  "results": [
+    { "motivo": "digestivo", "title": "tu caso merece un diagnóstico, no una etiqueta.", "body": "Lo que describes puede tener varias causas: dispepsia funcional, reflujo, Helicobacter, sobrecrecimiento bacteriano o la vesícula. Cada una se trata distinto. En la valoración revisamos tus estudios y definimos qué se estudia primero.", "guideName": "Lo que sí es gastritis: qué se estudia primero", "guideFile": "", "planName": "Plan Avanza", "planWhy": "Ingreso + 3 controles para avanzar hacia una meta concreta.", "planHref": "/servicios" },
+    { "motivo": "peso", "title": "el punto de partida no es la báscula.", "body": "Antes de cualquier plan o medicamento revisamos qué hay además del peso: glucosa, hígado, presión y composición corporal. Así decidimos cómo bajar grasa sin perder músculo.", "guideName": "Antes de recetar: 4 cosas que reviso para bajar de peso", "guideFile": "", "planName": "Plan Avanza", "planWhy": "Ingreso + 3 controles para avanzar hacia una meta concreta.", "planHref": "/servicios" },
+    { "motivo": "metabolico", "title": "esos exámenes son una oportunidad para actuar.", "body": "Hígado graso, glucosa y lípidos casi nunca vienen solos. En etapas tempranas muchos de estos cambios se revierten. Revisamos tus resultados juntos y armamos metas medibles.", "guideName": "Hígado graso: por qué no es menor y cómo se revierte", "guideFile": "", "planName": "Plan Avanza", "planWhy": "Ingreso + 3 controles para avanzar hacia una meta concreta.", "planHref": "/servicios" },
+    { "motivo": "peri", "title": "tu cuerpo cambió y tu plan también debe hacerlo.", "body": "En la perimenopausia cambia cómo se guarda la grasa, cómo duermes y cómo ganas músculo. Partimos de tu composición corporal y ajustamos alimentación, fuerza y descanso.", "guideName": "Metabolismo en la perimenopausia: lo que sí cambia", "guideFile": "", "planName": "Plan Avanza", "planWhy": "Ingreso + 3 controles para avanzar hacia una meta concreta.", "planHref": "/servicios" },
+    { "motivo": "bariatrico", "title": "el procedimiento es un día; el resultado, doce meses.", "body": "Te acompañamos antes, durante y después, en coordinación con el equipo de endoscopia o cirugía, para cuidar el músculo, evitar deficiencias y sostener el resultado.", "guideName": "Ruta del paciente bariátrico: antes, durante y después", "guideFile": "", "planName": "Programa bariátrico", "planWhy": "Seguimiento de 6 a 12 meses según tu procedimiento.", "planHref": "/programa-bariatrico" },
+    { "motivo": "rendimiento", "title": "kilos no es lo mismo que progreso.", "body": "Con bioimpedancia médica y cineantropometría medimos músculo, grasa y agua, y ajustamos energía y proteína a tu entrenamiento.", "guideName": "Composición corporal: cómo leer tus resultados", "guideFile": "", "planName": "Plan Avanza", "planWhy": "Ingreso + 3 controles para avanzar hacia una meta concreta.", "planHref": "/servicios" }
+  ],
+  "longCase": {
+    "planName": "Plan Transforma",
+    "planWhy": "Acompañamiento de 6 meses: ingreso + 6 controles."
+  },
+  "insights": [
+    { "question": "tiempo", "value": "t3", "text": "Llevas tiempo con esto. Si el tratamiento no ha cambiado, vale la pena revisar el diagnóstico." },
+    { "question": "tiempo", "value": "t4", "text": "Llevas tiempo con esto. Si el tratamiento no ha cambiado, vale la pena revisar el diagnóstico." },
+    { "question": "dx", "value": "dx2", "text": "Aún no hay estudios que confirmen qué tienes: ese es el primer paso." },
+    { "question": "dx", "value": "dx3", "text": "Aún no hay estudios que confirmen qué tienes: ese es el primer paso." },
+    { "question": "intentos", "value": "meds", "text": "Ya probaste medicamentos. En consulta revisamos por qué funcionaron o dejaron de funcionar." },
+    { "question": "intentos", "value": "supl", "text": "Tu cuerpo ya tiene su propio “detox”: hígado y riñón. La pregunta útil es cómo están." }
+  ],
+  "fallbackInsight": "Con una valoración completa sabremos por dónde empezar y qué medir.",
+  "resultUi": {
+    "eyebrow": "Tu resultado",
+    "alarm": "Algunas respuestas necesitan valoración pronto. Si tienes sangrado digestivo, vómito con sangre o heces negras, acude hoy a urgencias. Para lo demás, te contactamos con prioridad.",
+    "guideLabel": "Tu guía (PDF)",
+    "planLabel": "Para empezar",
+    "primary": { "label": "Agendar valoración", "href": "#" },
+    "detailsLabel": "Ver detalles",
+    "restartLabel": "Volver a empezar",
+    "disclaimer": "Este resultado orienta, no diagnostica. El diagnóstico se hace en consulta, con historia clínica, examen y los estudios que tu caso necesite."
+  }
+}

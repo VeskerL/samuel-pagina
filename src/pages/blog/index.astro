@@ -1,0 +1,16 @@
+---
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import BlogIndexBody from '../../components/pages/BlogIndexBody.astro';
+import Base from '../../layouts/Base.astro';
+import { getBlogPage, getPosts } from '../../lib/data';
+import { islands } from '../../lib/islands';
+
+const page = await getBlogPage();
+const posts = await getPosts();
+const data = page.data.blog;
+---
+<Base title={data.seo?.title} description={data.seo?.description}>
+  <TinaIsland name="blog" wrapper={islands.blog.wrapper} primary>
+    <BlogIndexBody data={data} posts={posts} />
+  </TinaIsland>
+</Base>

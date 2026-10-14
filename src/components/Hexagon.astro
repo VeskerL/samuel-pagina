@@ -1,0 +1,5 @@
+---
+interface Props { class?: string; fill?: string; stroke?: string; strokeWidth?: number }
+const { class: cls, fill = '#FFB700', stroke, strokeWidth = 4 } = Astro.props;
+---
+<svg class={cls} aria-hidden="true" viewBox="0 0 200 230"><polygon points="100,2 198,58.5 198,171.5 100,228 2,171.5 2,58.5" fill={stroke ? 'none' : fill} stroke={stroke} stroke-width={stroke ? strokeWidth : undefined}></polygon></svg>

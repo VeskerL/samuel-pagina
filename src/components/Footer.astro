@@ -1,0 +1,49 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { GlobalQuery } from '../../tina/__generated__/types';
+import { href, img, isExternal, lines, list } from '../lib/utils';
+
+interface Props { data: GlobalQuery['global'] | null }
+const { data } = Astro.props;
+const brand = data?.brand;
+const contact = data?.contact;
+const footer = data?.footer;
+---
+<footer class="footer">
+  <div class="wrap footer__in">
+    <div class="footer__grid">
+      <div class="footer__col">
+        {img(brand?.logo) && <img src={img(brand?.logo)} alt="" class="footer__logo" width="36" height="40" />}
+        <p class="footer__name">{brand?.name}</p>
+        <p class="footer__text" data-tina-field={footer ? tinaField(footer, 'statement') : undefined}>{footer?.statement}</p>
+      </div>
+      <div class="footer__col" data-tina-field={footer ? tinaField(footer, 'links') : undefined}>
+        <p class="footer__title">Explora</p>
+        {list(footer?.links).map((l) => <a href={href(l.href)}>{l.label}</a>)}
+      </div>
+      <div class="footer__col">
+        <p class="footer__title">Consultorio</p>
+        <p class="footer__text" data-tina-field={contact ? tinaField(contact, 'address') : undefined}>
+          {lines(contact?.address).map((line, i) => <>{i > 0 && <br />}{line}</>)}
+        </p>
+        <p class="footer__text" data-tina-field={contact ? tinaField(contact, 'modality') : undefined}>{contact?.modality}</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__title">Contacto</p>
+        {contact?.whatsappLabel && (
+          <a href={href(contact.whatsappUrl)} target={isExternal(href(contact.whatsappUrl)) ? '_blank' : undefined} rel="noopener" data-tina-field={tinaField(contact, 'whatsappLabel')}>{contact.whatsappLabel}</a>
+        )}
+        {contact?.email && <a href={`mailto:${contact.email}`} data-tina-field={tinaField(contact, 'email')}>{contact.email}</a>}
+        <span class="footer__social" data-tina-field={contact ? tinaField(contact, 'social') : undefined}>
+          {list(contact?.social).map((s) => <a href={href(s.url)} target="_blank" rel="noopener">{s.label}</a>)}
+        </span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span data-tina-field={footer ? tinaField(footer, 'copyright') : undefined}>{footer?.copyright}</span>
+      <span class="footer__legal" data-tina-field={footer ? tinaField(footer, 'legal') : undefined}>
+        {list(footer?.legal).map((l) => <a href={href(l.href)}>{l.label}</a>)}
+      </span>
+    </div>
+  </div>
+</footer>

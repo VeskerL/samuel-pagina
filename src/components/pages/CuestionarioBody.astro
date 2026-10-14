@@ -1,0 +1,87 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { CuestionarioQuery } from '../../../tina/__generated__/types';
+import { href, img, lines, list } from '../../lib/utils';
+import Hexagon from '../Hexagon.astro';
+
+interface Props { data: CuestionarioQuery['cuestionario'] }
+const { data } = Astro.props;
+const { intro, contact, resultUi, longCase } = data;
+
+/* Configuración que usa el navegador. Cada texto lleva su identificador
+   de campo para que el editor visual lo pueda señalar. */
+const config = {
+  questions: list(data.questions).map((q) => ({
+    key: q.key ?? '',
+    title: q.title ?? '',
+    hint: q.hint ?? '',
+    multiple: Boolean(q.multiple),
+    tf: { title: tinaField(q, 'title'), hint: tinaField(q, 'hint') },
+    options: list(q.options).map((o) => ({
+      value: o.value ?? '',
+      label: o.label ?? '',
+      sub: o.sub ?? '',
+      exclusive: Boolean(o.exclusive),
+      alarm: Boolean(o.alarm),
+      tf: tinaField(o, 'label'),
+    })),
+  })),
+  contact: {
+    eyebrow: contact?.eyebrow ?? '',
+    title: contact?.title ?? '',
+    body: contact?.body ?? '',
+    consent: contact?.consent ?? '',
+    submitLabel: contact?.submitLabel ?? '',
+    helper: contact?.helper ?? '',
+    webhookUrl: contact?.webhookUrl ?? '',
+    tf: { title: tinaField(contact, 'title'), body: tinaField(contact, 'body'), consent: tinaField(contact, 'consent') },
+  },
+  results: list(data.results).map((r) => ({
+    motivo: r.motivo ?? '',
+    title: r.title ?? '',
+    body: r.body ?? '',
+    guideName: r.guideName ?? '',
+    guideFile: img(r.guideFile),
+    planName: r.planName ?? '',
+    planWhy: r.planWhy ?? '',
+    planHref: href(r.planHref, '/servicios'),
+    tf: { title: tinaField(r, 'title'), body: tinaField(r, 'body') },
+  })),
+  longCase: { planName: longCase?.planName ?? '', planWhy: longCase?.planWhy ?? '' },
+  insights: list(data.insights).map((x) => ({ question: x.question ?? '', value: x.value ?? '', text: x.text ?? '' })),
+  fallbackInsight: data.fallbackInsight ?? '',
+  ui: {
+    eyebrow: resultUi?.eyebrow ?? '',
+    alarm: resultUi?.alarm ?? '',
+    guideLabel: resultUi?.guideLabel ?? '',
+    planLabel: resultUi?.planLabel ?? '',
+    primaryLabel: resultUi?.primary?.label ?? '',
+    primaryHref: href(resultUi?.primary?.href),
+    detailsLabel: resultUi?.detailsLabel ?? '',
+    restartLabel: resultUi?.restartLabel ?? '',
+    disclaimer: resultUi?.disclaimer ?? '',
+  },
+};
+const total = config.questions.length + 1;
+---
+<div class="quiz" data-quiz>
+  <script type="application/json" data-quiz-config set:html={JSON.stringify(config).replace(/</g, '\\u003c')}></script>
+  <div class="quiz__progress">
+    <div class="quiz__progress-meta"><span data-quiz-step>Inicio</span><span data-quiz-pct>0%</span></div>
+    <div class="quiz__bar"><div class="quiz__fill" data-quiz-fill></div></div>
+  </div>
+  <div class="quiz__stage" data-quiz-stage>
+    <div class="qcard qcard--in">
+      <Hexagon class="qcard__hex" />
+      <p class="eyebrow" data-tina-field={tinaField(intro, 'eyebrow')}>{intro?.eyebrow}</p>
+      <h1 class="q q--lg" data-tina-field={tinaField(intro, 'title')}>{lines(intro?.title).map((l, i) => <>{i > 0 && <br />}{l}</>)}</h1>
+      <p class="q-sub" data-tina-field={tinaField(intro, 'body')}>{intro?.body}</p>
+      <ul class="q-bullets" data-tina-field={tinaField(intro, 'bullets')}>
+        {list(intro?.bullets).map((b) => <li><span class="dot"></span>{b}</li>)}
+      </ul>
+      <button type="button" class="btn btn--dark btn--start" data-quiz-start data-tina-field={tinaField(intro, 'startLabel')}>{intro?.startLabel}</button>
+      <noscript><p class="small">Activa JavaScript para responder el cuestionario.</p></noscript>
+    </div>
+  </div>
+  <p class="sr-only" data-quiz-total>{total}</p>
+</div>

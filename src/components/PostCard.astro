@@ -1,0 +1,19 @@
+---
+import type { PostSummary } from '../lib/data';
+import { CATEGORY_LABELS, img } from '../lib/utils';
+
+interface Props { post: PostSummary }
+const { post } = Astro.props;
+const tone = post.tone || 'navy';
+const cover = img(post.image);
+---
+<a class="post" href={`/blog/${post._sys.filename}`} data-cat={post.category ?? ''}>
+  <div class:list={['post__cover', `tone-${tone}`]}>
+    {cover && <img src={cover} alt="" loading="lazy" class="post__img" />}
+    <span class="post__badge"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"></path></svg>Audio</span>
+    <span class="post__title">{post.title}</span>
+  </div>
+  <p class="eyebrow eyebrow--muted eyebrow--sm">{CATEGORY_LABELS[post.category ?? ''] ?? 'Blog'} · Audio + artículo</p>
+  <h3 class="h3 h3--sm">{post.hook}</h3>
+  <p class="body body--sm">{post.excerpt}</p>
+</a>

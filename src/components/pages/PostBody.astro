@@ -1,0 +1,35 @@
+---
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { PostQuery } from '../../../tina/__generated__/types';
+import { CATEGORY_LABELS, img } from '../../lib/utils';
+import AudioPlayer from '../AudioPlayer.astro';
+
+interface Props { data: PostQuery['post'] }
+const { data } = Astro.props;
+const date = data.date
+  ? new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Bogota' }).format(new Date(data.date))
+  : '';
+const cover = img(data.image);
+---
+<article class="article">
+  <div class="wrap wrap--narrow stack-22">
+    <a class="back-link" href="/blog">‹ Volver al blog</a>
+    <p class="eyebrow">
+      <span data-tina-field={tinaField(data, 'category')}>{CATEGORY_LABELS[data.category ?? ''] ?? 'Blog'}</span>
+      {date && <> · <span data-tina-field={tinaField(data, 'date')}>{date}</span></>}
+    </p>
+    <h1 class="display display--sm" data-tina-field={tinaField(data, 'title')}>{data.title}</h1>
+    <p class="lead" data-tina-field={tinaField(data, 'hook')}>{data.hook}</p>
+    <AudioPlayer src={img(data.audio)} duration={data.duration} field={tinaField(data, 'audio')} />
+    {cover && <img class="article__cover" src={cover} alt="" data-tina-field={tinaField(data, 'image')} />}
+    <div class="prose" data-tina-field={tinaField(data, 'body')}>
+      <TinaMarkdown content={data.body} />
+    </div>
+    <div class="band band--yellow band--sm">
+      <h2 class="h3">¿Te viste reflejado en esto?</h2>
+      <p class="body">Responde siete preguntas y te decimos qué se estudia primero en tu caso.</p>
+      <a class="btn btn--dark" href="/evalua-tu-caso">Evalúa tu caso</a>
+    </div>
+  </div>
+</article>
