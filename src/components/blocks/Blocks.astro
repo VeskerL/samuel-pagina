@@ -1,0 +1,48 @@
+---
+/**
+ * Dibuja las secciones de una página en el orden que tengan en Tina.
+ * Para agregar un tipo de sección nuevo: crea su plantilla en tina/blocks.ts,
+ * su componente en esta carpeta y añádelo al mapa de abajo.
+ */
+import type { PostSummary } from '../../lib/data';
+import { list } from '../../lib/utils';
+import CajaTarjetas from './CajaTarjetas.astro';
+import Encabezado from './Encabezado.astro';
+import Formulario from './Formulario.astro';
+import Franja from './Franja.astro';
+import Frase from './Frase.astro';
+import GuiaPasos from './GuiaPasos.astro';
+import ListadoBlog from './ListadoBlog.astro';
+import Pasos from './Pasos.astro';
+import Pestanas from './Pestanas.astro';
+import Planes from './Planes.astro';
+import PortadaFoto from './PortadaFoto.astro';
+import Precios from './Precios.astro';
+import Preguntas from './Preguntas.astro';
+import PromoApp from './PromoApp.astro';
+import Tarjetas from './Tarjetas.astro';
+import Texto from './Texto.astro';
+import UltimasEntradas from './UltimasEntradas.astro';
+
+interface Props { page: any; posts: PostSummary[] }
+const { page, posts } = Astro.props;
+
+const COMPONENTS: Record<string, any> = {
+  PortadaFoto, Encabezado, Pestanas, Pasos, Tarjetas, Precios, Planes, Frase, PromoApp,
+  GuiaPasos, Preguntas, CajaTarjetas, UltimasEntradas, ListadoBlog, Formulario, Franja, Texto,
+};
+const blocks = list<any>(page?.blocks);
+---
+{blocks.map((block, i) => {
+  const name = String(block.__typename ?? '').replace(/^PaginaBlocks/, '');
+  const Component = COMPONENTS[name];
+  return Component ? <Component block={block} first={i === 0} posts={posts} /> : null;
+})}
+{blocks.length === 0 && (
+  <section class="section section--top">
+    <div class="wrap head head--center">
+      <h1 class="h2">{page?.title}</h1>
+      <p class="lead">Esta página aún no tiene secciones. Agrégalas desde el editor con el botón “+”.</p>
+    </div>
+  </section>
+)}

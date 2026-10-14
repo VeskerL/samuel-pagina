@@ -1,0 +1,19 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { has, lines } from '../../lib/utils';
+import Buttons from './Buttons.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+const navy = block.tone === 'navy';
+const Tag = first ? 'h1' : 'h2';
+---
+<section class="section section--band" data-tina-field={tinaField(block)}>
+  <div class="wrap">
+    <div class:list={['band', navy ? 'band--navy' : 'band--yellow']}>
+      <Tag class:list={['h2', navy && 'is-light']} data-tina-field={tinaField(block, 'title')}>{lines(block.title).map((l, i) => <>{i > 0 && <br />}{l}</>)}</Tag>
+      {has(block.subtitle) && <p class:list={['lead lead--narrow', navy && 'lead--light']} data-tina-field={tinaField(block, 'subtitle')}>{block.subtitle}</p>}
+      <Buttons block={block} center />
+    </div>
+  </div>
+</section>

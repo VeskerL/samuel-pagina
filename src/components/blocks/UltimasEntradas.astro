@@ -1,0 +1,22 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { PostSummary } from '../../lib/data';
+import { has } from '../../lib/utils';
+import PostCard from '../PostCard.astro';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean; posts: PostSummary[] }
+const { block, first, posts } = Astro.props;
+const count = Math.max(1, Number(block.count) || 3);
+---
+<section class="section" data-tina-field={tinaField(block)}>
+  <div class="wrap stack-48">
+    <div class="head-row">
+      <Head block={block} first={first} />
+      {has(block.linkLabel) && <a class="more" href="/blog" data-tina-field={tinaField(block, 'linkLabel')}>{block.linkLabel}</a>}
+    </div>
+    <div class="grid grid--300">
+      {posts.slice(0, count).map((p) => <PostCard post={p} />)}
+    </div>
+  </div>
+</section>

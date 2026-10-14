@@ -1,0 +1,28 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { has, href, list } from '../../lib/utils';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+const navy = block.tone === 'navy';
+---
+<section class:list={['section', `tone-section-${block.tone || 'white'}`]} data-tina-field={tinaField(block)}>
+  <div class="wrap stack-40">
+    <Head block={block} first={first} center={block.align === 'center'} light={navy} />
+    <div class="grid grid--320">
+      {list<any>(block.items).map((x, i) => {
+        const dark = x.tone === 'navy';
+        return (
+          <div class:list={['tile', `tone-${x.tone || 'gray'}`]} data-tina-field={tinaField(block, 'items', i)}>
+            {has(x.tag) && <span class="tag tag--navy" data-tina-field={tinaField(x, 'tag')}>{x.tag}</span>}
+            {has(x.kicker) && <p class:list={['eyebrow', dark && 'eyebrow--yellow']} data-tina-field={tinaField(x, 'kicker')}>{x.kicker}</p>}
+            {has(x.title) && <h3 class="h3" data-tina-field={tinaField(x, 'title')}>{x.title}</h3>}
+            {has(x.body) && <p class="body" data-tina-field={tinaField(x, 'body')}>{x.body}</p>}
+            {x.cta?.label && <a class="more tile__link" href={href(x.cta.href)} data-tina-field={tinaField(x, 'cta')}>{x.cta.label}</a>}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

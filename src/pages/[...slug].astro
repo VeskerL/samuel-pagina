@@ -1,0 +1,28 @@
+---
+/**
+ * Todas las páginas de la colección "Páginas" de Tina.
+ * content/paginas/inicio.json → /
+ * content/paginas/servicios.json → /servicios
+ * Una página nueva creada en Tina aparece sola en su dirección.
+ */
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import Blocks from '../components/blocks/Blocks.astro';
+import Base from '../layouts/Base.astro';
+import { getPagina, getPaginaSlugs, getPosts } from '../lib/data';
+import { islands } from '../lib/islands';
+
+export async function getStaticPaths() {
+  const slugs = await getPaginaSlugs();
+  return slugs.map((file) => ({ params: { slug: file === 'inicio' ? undefined : file }, props: { file } }));
+}
+
+const { file } = Astro.props as { file: string };
+const page = await getPagina(file);
+const posts = await getPosts();
+const data = page.data.pagina;
+---
+<Base title={data.seo?.title || data.title} description={data.seo?.description} theme={data.darkHeader ? 'dark' : 'light'}>
+  <TinaIsland name="pagina" wrapper={islands.pagina.wrapper} params={{ file }} primary>
+    <Blocks page={data} posts={posts} />
+  </TinaIsland>
+</Base>

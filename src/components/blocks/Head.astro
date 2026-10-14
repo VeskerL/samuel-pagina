@@ -1,0 +1,31 @@
+---
+/** Antetítulo + título + texto de una sección. El primer bloque de la página usa h1. */
+import { tinaField } from '@tinacms/astro/tina-field';
+import { has, lines } from '../../lib/utils';
+
+interface Props {
+  block: any;
+  first?: boolean;
+  center?: boolean;
+  light?: boolean;
+  /** 'display' para encabezados de página, 'h2' para secciones. */
+  size?: 'display' | 'h2' | 'h2md';
+  highlight?: boolean;
+}
+const { block, first = false, center = false, light = false, size = 'h2', highlight = false } = Astro.props;
+const Tag = first ? 'h1' : 'h2';
+const titleClass = size === 'display' ? 'display display--md' : size === 'h2md' ? 'h2 h2--md' : 'h2';
+const show = has(block.eyebrow) || has(block.title) || has(block.subtitle) || (highlight && has(block.highlight));
+---
+{show && (
+  <div class:list={['head', center && 'head--center']}>
+    {has(block.eyebrow) && <p class:list={['eyebrow', light && 'eyebrow--yellow']} data-tina-field={tinaField(block, 'eyebrow')}>{block.eyebrow}</p>}
+    {(has(block.title) || (highlight && has(block.highlight))) && (
+      <Tag class:list={[titleClass, light && 'is-light']}>
+        {has(block.title) && <span data-tina-field={tinaField(block, 'title')}>{lines(block.title).map((l, i) => <>{i > 0 && <br />}{l}</>)}</span>}
+        {highlight && has(block.highlight) && <><br /><span class="text-yellow" data-tina-field={tinaField(block, 'highlight')}>{block.highlight}</span></>}
+      </Tag>
+    )}
+    {has(block.subtitle) && <p class:list={['lead lead--narrow', light && 'lead--light']} data-tina-field={tinaField(block, 'subtitle')}>{block.subtitle}</p>}
+  </div>
+)}

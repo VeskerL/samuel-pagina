@@ -1,0 +1,32 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { img, list } from '../../lib/utils';
+import Hexagon from '../Hexagon.astro';
+import Buttons from './Buttons.astro';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+---
+<section class="hero" data-tina-field={tinaField(block)}>
+  <div class="wrap hero__copy">
+    <Head block={block} first={first} center size="display" />
+    <Buttons block={block} center />
+  </div>
+  <div class="wrap">
+    <div class="stage">
+      <Hexagon class="stage__hex" />
+      <Hexagon class="stage__hex-line" stroke="#ffffff" strokeWidth={6} />
+      <Hexagon class="stage__hex-dot" />
+      {img(block.image) && (
+        <img class="stage__photo" src={img(block.image)} alt={block.imageAlt ?? ''} data-tina-field={tinaField(block, 'image')} width="506" height="675" fetchpriority="high" />
+      )}
+      <div class="stage__chips stage__chips--left" data-tina-field={tinaField(block, 'chipsLeft')}>
+        {list<string>(block.chipsLeft).map((c) => <span class="chip"><span class="dot"></span>{c}</span>)}
+      </div>
+      <div class="stage__chips stage__chips--right" data-tina-field={tinaField(block, 'chipsRight')}>
+        {list<string>(block.chipsRight).map((c) => <span class="chip"><span class="dot"></span>{c}</span>)}
+      </div>
+    </div>
+  </div>
+</section>

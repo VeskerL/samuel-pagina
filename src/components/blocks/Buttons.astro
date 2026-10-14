@@ -1,0 +1,29 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { href, isExternal, list } from '../../lib/utils';
+
+interface Props { block: any; name?: string; center?: boolean }
+const { block, name = 'buttons', center = false } = Astro.props;
+const items = list<any>(block?.[name]).filter((b) => b?.label);
+const cls: Record<string, string> = {
+  dark: 'btn btn--dark',
+  yellow: 'btn btn--yellow',
+  ghost: 'btn btn--ghost',
+  line: 'btn btn--line',
+  link: 'more',
+  store: 'store',
+};
+const download = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14" fill="none" stroke="#FFB700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+---
+{items.length > 0 && (
+  <div class:list={['actions', center && 'actions--center']} data-tina-field={tinaField(block, name)}>
+    {items.map((b) => {
+      const url = href(b.href);
+      return (
+        <a class={cls[b.style] ?? cls.dark} href={url} target={isExternal(url) ? '_blank' : undefined} rel={isExternal(url) ? 'noopener' : undefined} data-tina-field={tinaField(b, 'label')}>
+          {b.style === 'store' && <Fragment set:html={download} />}{b.label}
+        </a>
+      );
+    })}
+  </div>
+)}

@@ -1,0 +1,21 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+const id = `f-${Math.random().toString(36).slice(2, 8)}`;
+---
+<section class="section section--flush" data-tina-field={tinaField(block)}>
+  <div class="wrap">
+    <div class:list={['box split split--40', `tone-${block.tone || 'cream'}`]}>
+      <Head block={block} first={first} size="h2md" />
+      <form class="stack-14" data-ask-form data-webhook={block.webhookUrl ?? ''} data-thanks={block.thanks ?? ''}>
+        <label for={id} class="label" data-tina-field={tinaField(block, 'fieldLabel')}>{block.fieldLabel}</label>
+        <textarea id={id} name="pregunta" class="field" rows="4" required placeholder={block.placeholder ?? ''} data-tina-field={tinaField(block, 'placeholder')}></textarea>
+        <button type="submit" class="btn btn--dark btn--start" data-tina-field={tinaField(block, 'button')}>{block.button}</button>
+        <p class="small" role="status" aria-live="polite" data-ask-status></p>
+      </form>
+    </div>
+  </div>
+</section>

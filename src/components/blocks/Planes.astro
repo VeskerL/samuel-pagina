@@ -1,0 +1,46 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { has, href, list } from '../../lib/utils';
+import Check from '../Check.astro';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+const plans = list<any>(block.plans);
+const choosers = plans.some((p) => has(p.chooser));
+---
+<section class:list={['section', `tone-section-${block.tone || 'gray'}`]} id="planes" data-tina-field={tinaField(block)}>
+  <div class="wrap stack-48" data-switch>
+    <div class="stack-18">
+      <Head block={block} first={first} center light={block.tone === 'navy'} />
+      {choosers && (
+        <div class="pills pills--center" role="group" aria-label="¿Cuál es para mí?">
+          {plans.map((p, i) => has(p.chooser) && (
+            <button type="button" class:list={['pill', i === 0 && 'is-active']} aria-pressed={i === 0 ? 'true' : 'false'} data-switch-to={i} data-tina-field={tinaField(p, 'chooser')}>{p.chooser}</button>
+          ))}
+        </div>
+      )}
+    </div>
+    <div class="grid grid--320 grid--stretch">
+      {plans.map((p, i) => (
+        <div class:list={['plan', choosers && i === 0 && 'is-active']} data-switch-item={i} data-tina-field={tinaField(block, 'plans', i)}>
+          <div class="plan__top">
+            <h3 class="h3" data-tina-field={tinaField(p, 'name')}>{p.name}</h3>
+            {has(p.discount) && <span class="tag tag--yellow" data-tina-field={tinaField(p, 'discount')}>{p.discount}</span>}
+          </div>
+          <p class="body plan__desc" data-tina-field={tinaField(p, 'description')}>{p.description}</p>
+          <div>
+            <p class="price price--md" data-tina-field={tinaField(p, 'price')}>{p.price}</p>
+            <p class="small" data-tina-field={tinaField(p, 'savings')}>{p.savings}</p>
+          </div>
+          <hr class="rule" />
+          <div class="checklist checklist--plain" data-tina-field={tinaField(p, 'items')}>
+            {list<string>(p.items).map((it) => <div class="checklist__item"><Check size={22} /><span>{it}</span></div>)}
+          </div>
+          {p.cta?.label && <a class="btn btn--dark plan__cta" href={href(p.cta.href)} data-tina-field={tinaField(p, 'cta')}>{p.cta.label}</a>}
+        </div>
+      ))}
+    </div>
+    {has(block.legal) && <p class="fineprint" data-tina-field={tinaField(block, 'legal')}>{block.legal}</p>}
+  </div>
+</section>

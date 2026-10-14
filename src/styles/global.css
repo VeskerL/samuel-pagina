@@ -423,3 +423,20 @@ textarea.field { resize: vertical; }
 .footer__bottom { border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: 24px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: rgba(255, 255, 255, 0.62); }
 .footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
 .footer__legal a { font-size: 13px; }
+
+/* ─────────── Fondos de sección (bloques) ─────────── */
+.stack-24 { display: flex; flex-direction: column; gap: 24px; }
+.tone-section-gray { background: var(--gray); }
+.tone-section-cream { background: var(--cream); }
+.tone-section-navy { background: var(--navy); color: #fff; }
+.tone-section-navy .h3 { color: var(--navy); }
+.is-light { color: #fff; }
+.section--band { padding-top: 0; }
+.dark-hero.section--top { padding-top: clamp(72px, 9vw, 104px); }
+.section--stats { padding-bottom: 0; }
+.section--stats .stats { margin-top: 32px; }
+.tone-section-white.section--stats .stats, .tone-section-gray.section--stats .stats, .tone-section-cream.section--stats .stats { background: var(--line); }
+.tone-section-white .stats__item, .tone-section-gray .stats__item, .tone-section-cream .stats__item { background: var(--navy); }
+.dark-hero__copy .head--center { max-width: 1100px; }
+.head .h2 span, .head .display span { display: inline; }
+.box.tone-navy .mini__title { color: var(--navy); }

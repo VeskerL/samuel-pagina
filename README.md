@@ -2,19 +2,51 @@
 
 Sitio en **Astro 7** con **TinaCMS 3**. Cada página se puede editar sin tocar código, haciendo clic sobre el texto en la vista previa.
 
-## Páginas
+## Páginas armadas con secciones
 
-| Ruta | Contenido editable en Tina |
-|---|---|
-| `/` | Inicio |
-| `/servicios` | Servicios y planes |
-| `/programa-bariatrico` | Programa bariátrico |
-| `/blog` y `/blog/<entrada>` | Blog · página principal y Blog · entradas |
-| `/guia-nutrium` | Guía de Nutrium |
-| `/evalua-tu-caso` | Cuestionario "Evalúa tu caso" |
-| Menú y pie de todas las páginas | Ajustes generales |
+Inicio, Servicios, Programa bariátrico, Blog y Guía de Nutrium se encuentran en la colección **Páginas** de Tina. Cada página es una lista de **secciones**. Desde el editor se puede:
 
-El contenido vive en `content/` (JSON y Markdown). Las imágenes, los PDF y los audios van en `public/uploads/`, que es la biblioteca de medios de Tina.
+- **Agregar** una sección con el botón **+** y elegir el tipo.
+- **Reordenar** secciones arrastrándolas.
+- **Editar** el contenido haciendo clic sobre cualquier texto de la vista previa.
+- **Borrar** una sección con el ícono de la papelera.
+- **Crear páginas nuevas**: el nombre del archivo es la dirección. `promo-octubre` queda en `/promo-octubre`, e `inicio` es la portada.
+
+Tipos de sección disponibles:
+
+- Portada con foto del doctor
+- Encabezado de página (con cifras y botones opcionales)
+- Pestañas (áreas o rutas)
+- Tarjetas numeradas
+- Tarjetas
+- Precios de consulta
+- Planes (con selector "¿Cuál es para mí?")
+- Frase con foto
+- App Nutrium (con teléfono)
+- Guía paso a paso
+- Preguntas frecuentes
+- Caja con mini tarjetas
+- Últimas entradas del blog
+- Listado del blog
+- Formulario de pregunta
+- Franja de llamado a la acción
+- Texto libre
+
+En la mayoría de las secciones se puede elegir el color de fondo: blanco, gris, crema o azul.
+
+Aparte de las páginas hay tres colecciones más:
+
+- **Blog · entradas**: cada artículo, con su audio, en `/blog/<entrada>`.
+- **Cuestionario "Evalúa tu caso"**: la página `/evalua-tu-caso`.
+- **Ajustes generales**: el menú, el pie y los datos de contacto de todas las páginas.
+
+El contenido vive en `content/`, en archivos JSON y Markdown. Las imágenes, los PDF y los audios van en `public/uploads/`, que es la biblioteca de medios de Tina.
+
+Para agregar un tipo de sección nuevo hacen falta tres pasos:
+
+1. Crear su plantilla en `tina/blocks.ts`.
+2. Crear su componente en `src/components/blocks/`.
+3. Registrar el componente en `Blocks.astro`.
 
 ## Trabajar en local
 

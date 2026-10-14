@@ -1,5 +1,6 @@
 import type { Collection } from 'tinacms';
-import { cta, image, longText, objectList, sectionHead, singlePage, stringList, text } from './fields';
+import { BLOCKS } from './blocks';
+import { cta, image, longText, objectList, singlePage, stringList, text } from './fields';
 
 /* ───────────── Ajustes generales: menú, pie y datos de contacto ───────────── */
 export const Global: Collection = {
@@ -52,167 +53,50 @@ export const Global: Collection = {
   ],
 };
 
-/* ───────────────────────────────── Inicio ───────────────────────────────── */
-export const Inicio = singlePage('inicio', 'Inicio', '/', [
-  {
-    type: 'object',
-    name: 'hero',
-    label: 'Portada',
-    fields: [
-      text('eyebrow', 'Antetítulo'),
-      longText('title', 'Título'),
-      longText('subtitle', 'Texto'),
-      cta('primary', 'Botón principal'),
-      cta('secondary', 'Enlace secundario'),
-      image('image', 'Foto del doctor (PNG sin fondo)'),
-      text('imageAlt', 'Descripción de la foto'),
-      stringList('chipsLeft', 'Etiquetas abajo a la izquierda'),
-      stringList('chipsRight', 'Etiquetas arriba a la derecha'),
-    ],
+/* ───────────────────────────── Páginas por bloques ───────────────────────────── */
+export const Pagina: Collection = {
+  name: 'pagina',
+  label: 'Páginas',
+  path: 'content/paginas',
+  format: 'json',
+  ui: {
+    router: ({ document }) => (document._sys.filename === 'inicio' ? '/' : `/${document._sys.filename}`),
+    filename: {
+      slugify: (values: Record<string, unknown>) =>
+        String(values?.title || '')
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, ''),
+    },
   },
-  sectionHead('areasHead', 'Áreas · encabezado'),
-  objectList(
-    'areas',
-    'Áreas de consulta (pestañas)',
-    [
-      text('label', 'Texto de la pestaña'),
-      text('kicker', 'Antetítulo'),
-      text('title', 'Título'),
-      longText('body', 'Texto'),
-      stringList('points', 'Puntos clave'),
-      cta('cta', 'Botón'),
-    ],
-    'label',
-  ),
-  sectionHead('stepsHead', 'Primera consulta · encabezado'),
-  objectList('steps', 'Primera consulta · pasos', [text('title', 'Título'), longText('body', 'Texto')]),
-  {
-    type: 'object',
-    name: 'quote',
-    label: 'Frase del doctor',
-    fields: [
-      text('eyebrow', 'Antetítulo'),
-      longText('text', 'Frase'),
-      text('author', 'Firma'),
-      image('image', 'Foto'),
-      text('imageAlt', 'Descripción de la foto'),
-    ],
-  },
-  sectionHead('nutrium', 'Bloque Nutrium', [cta('primary', 'Botón principal'), cta('secondary', 'Enlace secundario')]),
-  sectionHead('blog', 'Bloque del blog', [text('linkLabel', 'Texto del enlace "ver todo"')]),
-  sectionHead('ctaBand', 'Franja final (llamado al test)', [cta('button', 'Botón')]),
-]);
-
-/* ──────────────────────────────── Servicios ─────────────────────────────── */
-export const Servicios = singlePage('servicios', 'Servicios y planes', '/servicios', [
-  sectionHead('hero', 'Portada'),
-  objectList(
-    'consultas',
-    'Consultas',
-    [
-      text('kicker', 'Antetítulo (nombre y duración)'),
-      text('price', 'Precio'),
-      longText('body', 'Qué incluye'),
-      cta('cta', 'Botón'),
-      { type: 'boolean', name: 'featured', label: 'Destacada (fondo azul)' },
-    ],
-    'kicker',
-  ),
-  sectionHead('plansHead', 'Planes · encabezado'),
-  objectList(
-    'plans',
-    'Planes',
-    [
-      text('name', 'Nombre'),
-      text('discount', 'Descuento (etiqueta)'),
-      longText('description', 'Descripción'),
-      text('price', 'Precio'),
-      text('savings', 'Ahorro'),
-      stringList('items', 'Incluye'),
-      text('chooser', 'Texto del selector "¿Cuál es para mí?"', 'Ej.: Empiezo desde cero'),
-      cta('cta', 'Botón'),
-    ],
-    'name',
-  ),
-  longText('plansLegal', 'Condiciones de los planes'),
-  sectionHead('extrasHead', 'Otros servicios · encabezado'),
-  objectList(
-    'extras',
-    'Otros servicios',
-    [
-      text('kicker', 'Antetítulo'),
-      text('title', 'Título'),
-      longText('body', 'Texto'),
-      cta('cta', 'Enlace (opcional)'),
-      {
-        type: 'string',
-        name: 'tone',
-        label: 'Color de la tarjeta',
-        options: [
-          { value: 'navy', label: 'Azul marino' },
-          { value: 'gray', label: 'Gris claro' },
-          { value: 'cream', label: 'Crema' },
-        ],
-      },
-    ],
-  ),
-  sectionHead('business', 'Empresas e instituciones', [
-    cta('cta', 'Botón'),
-    objectList('items', 'Servicios para empresas', [text('title', 'Título'), longText('body', 'Texto')]),
-  ]),
-]);
-
-/* ─────────────────────────── Programa bariátrico ────────────────────────── */
-export const Bariatrico = singlePage('bariatrico', 'Programa bariátrico', '/programa-bariatrico', [
-  {
-    type: 'object',
-    name: 'hero',
-    label: 'Portada',
-    fields: [
-      text('eyebrow', 'Antetítulo'),
-      text('title', 'Título (línea blanca)'),
-      text('highlight', 'Título (línea amarilla)'),
-      longText('subtitle', 'Texto'),
-      cta('primary', 'Botón principal'),
-      cta('secondary', 'Botón secundario'),
-      objectList('stats', 'Cifras', [text('value', 'Cifra'), text('label', 'Descripción')], 'value'),
-    ],
-  },
-  sectionHead('routesHead', 'Rutas · encabezado'),
-  objectList(
-    'routes',
-    'Rutas (pestañas)',
-    [
-      text('tab', 'Texto de la pestaña'),
-      text('kicker', 'Antetítulo'),
-      text('title', 'Título'),
-      longText('body', 'Texto'),
-      text('ally', 'Aliado (nombre y especialidad)'),
-      objectList('facts', 'Datos', [text('label', 'Dato'), text('value', 'Valor')], 'label'),
-      cta('cta', 'Botón'),
-    ],
-    'tab',
-  ),
-  sectionHead('phasesHead', 'Fases · encabezado'),
-  objectList('phases', 'Fases', [text('tag', 'Etiqueta'), text('title', 'Título'), longText('body', 'Texto')]),
-  sectionHead('faqHead', 'Preguntas frecuentes · encabezado', [cta('cta', 'Botón')]),
-  objectList('faqs', 'Preguntas frecuentes', [text('question', 'Pregunta'), longText('answer', 'Respuesta')], 'question'),
-  sectionHead('ctaBand', 'Franja final', [cta('button', 'Botón')]),
-]);
-
-/* ─────────────────────────────── Blog (página) ──────────────────────────── */
-export const BlogPage = singlePage('blog', 'Blog · página principal', '/blog', [
-  sectionHead('hero', 'Portada'),
-  text('featuredLabel', 'Texto sobre la entrada destacada'),
-  text('readMoreLabel', 'Texto "leer artículo"'),
-  sectionHead('ask', 'Pregúntale al doctor', [
-    text('fieldLabel', 'Etiqueta del campo'),
-    text('placeholder', 'Ejemplo dentro del campo'),
-    text('button', 'Texto del botón'),
-    text('thanks', 'Mensaje al enviar'),
-    text('webhookUrl', 'URL que recibe las preguntas (opcional)', 'Formspree, Make, Zapier… Si se deja vacío, solo se muestra el mensaje.'),
-  ]),
-]);
+  fields: [
+    {
+      type: 'string',
+      name: 'title',
+      label: 'Nombre de la página',
+      isTitle: true,
+      required: true,
+      description: 'El nombre del archivo es la dirección: "inicio" es la portada; "servicios" queda en /servicios.',
+    },
+    {
+      type: 'object',
+      name: 'seo',
+      label: 'SEO',
+      fields: [text('title', 'Título de la pestaña (Google)'), longText('description', 'Descripción para Google')],
+    },
+    { type: 'boolean', name: 'darkHeader', label: 'Menú oscuro (para páginas que empiezan con fondo azul)' },
+    {
+      type: 'object',
+      name: 'blocks',
+      label: 'Secciones',
+      list: true,
+      templates: BLOCKS,
+      ui: { visualSelector: false },
+    },
+  ],
+};
 
 export const CATEGORIES = [
   { value: 'digestivo', label: 'Digestivo' },
@@ -264,20 +148,6 @@ export const Post: Collection = {
     { type: 'rich-text', name: 'body', label: 'Artículo', isBody: true },
   ],
 };
-
-/* ──────────────────────────────── Nutrium ───────────────────────────────── */
-export const Nutrium = singlePage('nutrium', 'Guía de Nutrium', '/guia-nutrium', [
-  sectionHead('hero', 'Portada', [text('appStoreUrl', 'Enlace App Store'), text('googlePlayUrl', 'Enlace Google Play')]),
-  objectList('steps', 'Pasos', [
-    text('title', 'Título del paso'),
-    longText('text', 'Explicación'),
-    text('screen', 'Título en la pantalla del teléfono'),
-    stringList('rows', 'Filas en la pantalla'),
-    text('action', 'Botón en la pantalla'),
-  ]),
-  objectList('faqs', 'Preguntas frecuentes', [text('question', 'Pregunta'), longText('answer', 'Respuesta')], 'question'),
-  sectionHead('ctaBand', 'Franja final', [cta('primary', 'Botón principal'), cta('secondary', 'Botón secundario')]),
-]);
 
 /* ────────────────────────────── Cuestionario ────────────────────────────── */
 export const Cuestionario = singlePage('cuestionario', 'Cuestionario "Evalúa tu caso"', '/evalua-tu-caso', [
@@ -379,4 +249,4 @@ export const Cuestionario = singlePage('cuestionario', 'Cuestionario "Evalúa tu
   },
 ]);
 
-export const collections = [Global, Inicio, Servicios, Bariatrico, BlogPage, Post, Nutrium, Cuestionario];
+export const collections = [Pagina, Post, Cuestionario, Global];

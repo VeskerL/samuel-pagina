@@ -1,0 +1,42 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import type { PostSummary } from '../../lib/data';
+import { CATEGORY_LABELS, img } from '../../lib/utils';
+import AudioPlayer from '../AudioPlayer.astro';
+import PostCard from '../PostCard.astro';
+
+interface Props { block: any; first?: boolean; posts: PostSummary[] }
+const { block, posts } = Astro.props;
+const featured = posts.find((p) => p.featured) ?? posts[0];
+const usedCats = Object.keys(CATEGORY_LABELS).filter((c) => posts.some((p) => p.category === c));
+const photo = (featured && img(featured.image)) || img(block.featuredImage);
+---
+<div data-tina-field={tinaField(block)}>
+  {featured && (
+    <section class="section section--flush">
+      <div class="wrap">
+        <div class="feature">
+          <div class="feature__copy">
+            <p class="eyebrow eyebrow--yellow"><span data-tina-field={tinaField(block, 'featuredLabel')}>{block.featuredLabel}</span> · {CATEGORY_LABELS[featured.category ?? ''] ?? 'Blog'}</p>
+            <h2 class="h2 is-light">{featured.title}</h2>
+            <p class="lead lead--light">{featured.excerpt}</p>
+            <AudioPlayer src={img(featured.audio)} duration={featured.duration} dark />
+            <a class="more more--yellow" href={`/blog/${featured._sys.filename}`} data-tina-field={tinaField(block, 'readMoreLabel')}>{block.readMoreLabel}</a>
+          </div>
+          {photo && <img class="feature__img" src={photo} alt="" loading="lazy" data-tina-field={tinaField(block, 'featuredImage')} />}
+        </div>
+      </div>
+    </section>
+  )}
+  <section class="section section--flush" data-filter-group>
+    <div class="wrap stack-36">
+      <div class="pills" role="group" aria-label="Categorías">
+        <button type="button" class="pill is-active" aria-pressed="true" data-filter="">Todos</button>
+        {usedCats.map((c) => <button type="button" class="pill" aria-pressed="false" data-filter={c}>{CATEGORY_LABELS[c]}</button>)}
+      </div>
+      <div class="grid grid--300 grid--posts">
+        {posts.map((p) => <PostCard post={p} />)}
+      </div>
+    </div>
+  </section>
+</div>

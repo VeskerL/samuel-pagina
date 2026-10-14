@@ -1,0 +1,30 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { list } from '../../lib/utils';
+import Hexagon from '../Hexagon.astro';
+import Buttons from './Buttons.astro';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+const navy = block.tone === 'navy';
+const center = block.align !== 'left';
+const stats = list<any>(block.stats);
+---
+<section
+  class:list={['section section--top', `tone-section-${block.tone || 'white'}`, navy && 'dark-hero', stats.length > 0 && 'section--stats']}
+  data-tina-field={tinaField(block)}
+>
+  {navy && <Hexagon class="dark-hero__hex" stroke="#FFB700" strokeWidth={3} />}
+  <div class="wrap dark-hero__copy stack-24">
+    <Head block={block} first={first} center={center} light={navy} size="display" highlight />
+    <Buttons block={block} center={center} />
+    {stats.length > 0 && (
+      <div class="stats" data-tina-field={tinaField(block, 'stats')}>
+        {stats.map((s) => (
+          <div class="stats__item"><span class="stats__value">{s.value}</span><span class="stats__label">{s.label}</span></div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>

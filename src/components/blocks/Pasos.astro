@@ -1,0 +1,23 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { list } from '../../lib/utils';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+const navy = block.tone === 'navy';
+---
+<section class:list={['section', `tone-section-${block.tone || 'gray'}`]} data-tina-field={tinaField(block)}>
+  <div class="wrap stack-56">
+    <Head block={block} first={first} center={block.align !== 'left'} light={navy} />
+    <div class="grid grid--250">
+      {list<any>(block.items).map((s, i) => (
+        <div class="card" data-tina-field={tinaField(block, 'items', i)}>
+          <span class="card__num">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="h3" data-tina-field={tinaField(s, 'title')}>{s.title}</h3>
+          <p class="body" data-tina-field={tinaField(s, 'body')}>{s.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

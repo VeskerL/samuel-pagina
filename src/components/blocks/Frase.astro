@@ -1,0 +1,19 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { has, img } from '../../lib/utils';
+
+interface Props { block: any; first?: boolean }
+const { block } = Astro.props;
+---
+<section class="section" data-tina-field={tinaField(block)}>
+  <div class="wrap">
+    <div class="quote">
+      {img(block.image) && <img class="quote__img" src={img(block.image)} alt={block.imageAlt ?? ''} loading="lazy" data-tina-field={tinaField(block, 'image')} />}
+      <div class="quote__copy">
+        {has(block.eyebrow) && <p class="eyebrow eyebrow--yellow" data-tina-field={tinaField(block, 'eyebrow')}>{block.eyebrow}</p>}
+        <p class="quote__text" data-tina-field={tinaField(block, 'text')}>{block.text}</p>
+        {has(block.author) && <p class="quote__author" data-tina-field={tinaField(block, 'author')}>{block.author}</p>}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { has, list } from '../../lib/utils';
+import Buttons from './Buttons.astro';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+---
+<section class:list={['section', `tone-section-${block.tone || 'cream'}`]} data-tina-field={tinaField(block)}>
+  <div class="wrap split">
+    <div class="stack-20">
+      <Head block={block} first={first} light={block.tone === 'navy'} />
+      <Buttons block={block} />
+    </div>
+    <div class="phone-wrap">
+      <div class="phone" aria-hidden="true">
+        <div class="phone__screen">
+          <p class="phone__small">Hoy</p>
+          <p class="phone__title" data-tina-field={tinaField(block, 'phoneTitle')}>{block.phoneTitle}</p>
+          {list<any>(block.phoneRows).map((r) => (
+            <div class:list={['phone__row phone__row--stack', r.dark && 'phone__row--dark']} data-tina-field={tinaField(r)}>
+              <span class:list={['phone__tag', r.dark && 'phone__tag--yellow']}>{r.tag}</span><span>{r.text}</span>
+            </div>
+          ))}
+          {has(block.phoneButton) && <div class="phone__btn phone__btn--yellow" data-tina-field={tinaField(block, 'phoneButton')}>{block.phoneButton}</div>}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,166 @@
+{
+  "title": "Guía de Nutrium",
+  "seo": {
+    "title": "Guía de Nutrium · Dr. Samuel Herrera",
+    "description": "Cómo descargar Nutrium, activar tu cuenta, seguir tu plan, escribirle al doctor y agendar tus controles."
+  },
+  "darkHeader": false,
+  "blocks": [
+    {
+      "_template": "encabezado",
+      "eyebrow": "Guía para pacientes",
+      "title": "Nutrium,\npaso a paso.",
+      "subtitle": "La app donde vive tu plan. En cinco minutos la tienes lista: descarga, activa tu cuenta y empieza.",
+      "highlight": "",
+      "align": "center",
+      "tone": "cream",
+      "buttons": [
+        {
+          "label": "Descargar en App Store",
+          "href": "#",
+          "style": "store"
+        },
+        {
+          "label": "Descargar en Google Play",
+          "href": "#",
+          "style": "store"
+        }
+      ],
+      "stats": []
+    },
+    {
+      "_template": "guiaPasos",
+      "eyebrow": "",
+      "title": "",
+      "subtitle": "",
+      "tone": "gray",
+      "steps": [
+        {
+          "title": "Descarga la app",
+          "text": "Busca “Nutrium” en App Store o Google Play. Es gratuita para pacientes.",
+          "screen": "Bienvenido a Nutrium",
+          "rows": [
+            "App gratuita para pacientes",
+            "iPhone y Android"
+          ],
+          "action": "Descargar"
+        },
+        {
+          "title": "Activa tu cuenta",
+          "text": "Después de tu primera cita te llega un correo de invitación. Crea tu contraseña con ese mismo correo.",
+          "screen": "Activa tu cuenta",
+          "rows": [
+            "Abre el correo de invitación",
+            "Usa el mismo correo de la consulta",
+            "Crea tu contraseña"
+          ],
+          "action": "Activar cuenta"
+        },
+        {
+          "title": "Revisa tu plan",
+          "text": "Tu plan alimentario, recomendaciones y metas quedan en la app, organizados por día.",
+          "screen": "Tu plan del día",
+          "rows": [
+            "Desayuno · [comida del plan]",
+            "Almuerzo · [comida del plan]",
+            "Metas de la semana"
+          ],
+          "action": "Ver plan completo"
+        },
+        {
+          "title": "Registra tu día",
+          "text": "Anota tus comidas y avances. El doctor los revisa para ajustar el plan en cada control.",
+          "screen": "Tu registro",
+          "rows": [
+            "Comidas del día",
+            "Agua",
+            "Cómo te sentiste"
+          ],
+          "action": "Agregar registro"
+        },
+        {
+          "title": "Escríbele al doctor",
+          "text": "Resuelve dudas por mensaje dentro del horario de atención asignado.",
+          "screen": "Mensajes",
+          "rows": [
+            "Dr. Samuel Herrera",
+            "Horario: [HORARIO DE CHAT]"
+          ],
+          "action": "Escribir mensaje"
+        },
+        {
+          "title": "Agenda tus controles",
+          "text": "Elige día y hora para tu próximo control, presencial o virtual.",
+          "screen": "Agenda",
+          "rows": [
+            "Control presencial · Envigado",
+            "Control virtual",
+            "Elige día y hora"
+          ],
+          "action": "Confirmar cita"
+        }
+      ]
+    },
+    {
+      "_template": "tarjetas",
+      "eyebrow": "",
+      "title": "",
+      "subtitle": "",
+      "align": "left",
+      "tone": "white",
+      "items": [
+        {
+          "tag": "",
+          "kicker": "",
+          "title": "No me llegó el correo de invitación",
+          "body": "Revisa spam y promociones. Si no aparece, escríbele a Valentina por WhatsApp y te lo reenvía.",
+          "cta": {
+            "label": "",
+            "href": ""
+          },
+          "tone": "gray"
+        },
+        {
+          "tag": "",
+          "kicker": "",
+          "title": "¿Cuándo me responde el doctor?",
+          "body": "Los mensajes se responden en el horario de atención asignado: [HORARIO DE CHAT]. Si es una urgencia, acude a un servicio de urgencias.",
+          "cta": {
+            "label": "",
+            "href": ""
+          },
+          "tone": "gray"
+        },
+        {
+          "tag": "",
+          "kicker": "",
+          "title": "¿Puedo cambiar una cita?",
+          "body": "Sí, desde el enlace de agenda y según disponibilidad. Las citas de tu plan se pueden reagendar dentro de su vigencia.",
+          "cta": {
+            "label": "",
+            "href": ""
+          },
+          "tone": "gray"
+        }
+      ]
+    },
+    {
+      "_template": "franja",
+      "title": "¿Ya tienes la app? Agenda tu control.",
+      "subtitle": "",
+      "tone": "navy",
+      "buttons": [
+        {
+          "label": "Agendar en Nutrium",
+          "href": "#",
+          "style": "yellow"
+        },
+        {
+          "label": "Hablar con Valentina",
+          "href": "#",
+          "style": "line"
+        }
+      ]
+    }
+  ]
+}

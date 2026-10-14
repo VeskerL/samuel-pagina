@@ -6,24 +6,10 @@
 import type { IslandRegistry } from '@tinacms/astro/experimental';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import BariatricoBody from '../components/pages/BariatricoBody.astro';
-import BlogIndexBody from '../components/pages/BlogIndexBody.astro';
+import Blocks from '../components/blocks/Blocks.astro';
 import CuestionarioBody from '../components/pages/CuestionarioBody.astro';
-import InicioBody from '../components/pages/InicioBody.astro';
-import NutriumBody from '../components/pages/NutriumBody.astro';
 import PostBody from '../components/pages/PostBody.astro';
-import ServiciosBody from '../components/pages/ServiciosBody.astro';
-import {
-  getBariatrico,
-  getBlogPage,
-  getCuestionario,
-  getGlobal,
-  getInicio,
-  getNutrium,
-  getPost,
-  getPosts,
-  getServicios,
-} from './data';
+import { getCuestionario, getGlobal, getPagina, getPost, getPosts } from './data';
 
 const MAIN = { tag: 'main', className: 'main' };
 const DIV = { tag: 'div' };
@@ -49,34 +35,13 @@ export const islands: IslandRegistry = {
     wrapper: DIV,
     propsFromData: (data) => ({ data: pick(data, 'global') }),
   },
-  inicio: {
-    fetch: async () => ({ page: await getInicio(), posts: await getPosts() }),
-    component: InicioBody,
+  pagina: {
+    fetch: async (_req, params) => ({ page: await getPagina(params.get('file') ?? 'inicio'), posts: await getPosts() }),
+    component: Blocks,
     wrapper: MAIN,
     propsFromData: (d) => {
       const { page, posts } = d as { page: unknown; posts: unknown };
-      return { data: pick(page, 'inicio'), posts };
-    },
-  },
-  servicios: {
-    fetch: () => getServicios(),
-    component: ServiciosBody,
-    wrapper: MAIN,
-    propsFromData: (data) => ({ data: pick(data, 'servicios') }),
-  },
-  bariatrico: {
-    fetch: () => getBariatrico(),
-    component: BariatricoBody,
-    wrapper: MAIN,
-    propsFromData: (data) => ({ data: pick(data, 'bariatrico') }),
-  },
-  blog: {
-    fetch: async () => ({ page: await getBlogPage(), posts: await getPosts() }),
-    component: BlogIndexBody,
-    wrapper: MAIN,
-    propsFromData: (d) => {
-      const { page, posts } = d as { page: unknown; posts: unknown };
-      return { data: pick(page, 'blog'), posts };
+      return { page: pick(page, 'pagina'), posts };
     },
   },
   post: {
@@ -84,12 +49,6 @@ export const islands: IslandRegistry = {
     component: PostBody,
     wrapper: MAIN,
     propsFromData: (data) => ({ data: pick(data, 'post') }),
-  },
-  nutrium: {
-    fetch: () => getNutrium(),
-    component: NutriumBody,
-    wrapper: MAIN,
-    propsFromData: (data) => ({ data: pick(data, 'nutrium') }),
   },
   cuestionario: {
     fetch: () => getCuestionario(),

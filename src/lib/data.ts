@@ -10,11 +10,16 @@ const FILE = { relativePath: 'index.json' };
 const primary = { priority: 'primary' as const };
 
 export const getGlobal = () => requestWithMetadata(client.queries.global(FILE));
-export const getInicio = () => requestWithMetadata(client.queries.inicio(FILE), primary);
-export const getServicios = () => requestWithMetadata(client.queries.servicios(FILE), primary);
-export const getBariatrico = () => requestWithMetadata(client.queries.bariatrico(FILE), primary);
-export const getBlogPage = () => requestWithMetadata(client.queries.blog(FILE), primary);
-export const getNutrium = () => requestWithMetadata(client.queries.nutrium(FILE), primary);
+export const getPagina = (file: string) =>
+  requestWithMetadata(client.queries.pagina({ relativePath: `${file}.json` }), primary);
+
+/** Nombres de archivo de todas las páginas (sin extensión). */
+export async function getPaginaSlugs() {
+  const res = await client.queries.paginaConnection({ first: 200 });
+  return (res.data.paginaConnection.edges ?? [])
+    .map((e) => e?.node?._sys.filename)
+    .filter((f): f is string => Boolean(f));
+}
 export const getCuestionario = () => requestWithMetadata(client.queries.cuestionario(FILE), primary);
 export const getPost = (slug: string) =>
   requestWithMetadata(client.queries.post({ relativePath: `${slug}.md` }), primary);

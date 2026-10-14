@@ -1,0 +1,26 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import { href, list } from '../../lib/utils';
+import Head from './Head.astro';
+
+interface Props { block: any; first?: boolean }
+const { block, first } = Astro.props;
+---
+<section class="section section--flush" data-tina-field={tinaField(block)}>
+  <div class="wrap">
+    <div class:list={['box split split--40', `tone-${block.tone || 'gray'}`]}>
+      <div class="stack-18">
+        <Head block={block} first={first} size="h2md" light={block.tone === 'navy'} />
+        {block.cta?.label && <a class="btn btn--dark btn--start" href={href(block.cta.href)} data-tina-field={tinaField(block, 'cta')}>{block.cta.label}</a>}
+      </div>
+      <div class="grid grid--220 grid--tight">
+        {list<any>(block.items).map((it, i) => (
+          <div class="mini" data-tina-field={tinaField(block, 'items', i)}>
+            <p class="mini__title" data-tina-field={tinaField(it, 'title')}>{it.title}</p>
+            <p class="body body--sm" data-tina-field={tinaField(it, 'body')}>{it.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

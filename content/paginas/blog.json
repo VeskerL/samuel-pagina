@@ -1,0 +1,39 @@
+{
+  "title": "Blog",
+  "seo": {
+    "title": "Blog · Consulta abierta · Dr. Samuel Herrera",
+    "description": "Las preguntas que más se escuchan en consulta, respondidas en audio y en artículo: digestión, peso, metabolismo, sueño y hábitos."
+  },
+  "darkHeader": false,
+  "blocks": [
+    {
+      "_template": "encabezado",
+      "eyebrow": "Blog · Audio + artículo",
+      "title": "Consulta abierta.",
+      "subtitle": "Las preguntas que más escucho en consulta, respondidas en voz alta. Escucha el episodio o lee el artículo: es la misma conversación.",
+      "highlight": "",
+      "align": "left",
+      "tone": "white",
+      "buttons": [],
+      "stats": []
+    },
+    {
+      "_template": "listadoBlog",
+      "featuredLabel": "Episodio destacado",
+      "readMoreLabel": "Leer el artículo completo ›",
+      "featuredImage": "/uploads/doctor-retrato.jpg"
+    },
+    {
+      "_template": "formulario",
+      "eyebrow": "Pregúntale al doctor",
+      "title": "Tu pregunta puede ser el próximo episodio.",
+      "subtitle": "Sin datos personales ni de salud: solo la pregunta.",
+      "fieldLabel": "¿Qué te gustaría que respondiera?",
+      "placeholder": "Ej.: ¿Por qué me despierto todas las noches a las 3 a. m.?",
+      "button": "Enviar pregunta",
+      "thanks": "Recibida, gracias.",
+      "webhookUrl": "",
+      "tone": "cream"
+    }
+  ]
+}

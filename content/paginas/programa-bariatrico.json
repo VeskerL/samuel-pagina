@@ -1,0 +1,247 @@
+{
+  "title": "Programa bariátrico",
+  "seo": {
+    "title": "Programa bariátrico · Dr. Samuel Herrera",
+    "description": "Acompañamiento médico-nutricional antes, durante y 12 meses después de balón intragástrico, sutura endoscópica o cirugía bariátrica."
+  },
+  "darkHeader": true,
+  "blocks": [
+    {
+      "_template": "encabezado",
+      "eyebrow": "Programa de acompañamiento bariátrico",
+      "title": "El procedimiento es un día.",
+      "highlight": "El resultado, doce meses.",
+      "subtitle": "Seguimiento médico-nutricional antes, durante y después de tu procedimiento, para cuidar el músculo, evitar deficiencias y sostener lo que lograste.",
+      "align": "center",
+      "tone": "navy",
+      "buttons": [
+        {
+          "label": "Agendar valoración",
+          "href": "/evalua-tu-caso",
+          "style": "yellow"
+        },
+        {
+          "label": "Ver las rutas",
+          "href": "#rutas",
+          "style": "line"
+        }
+      ],
+      "stats": [
+        {
+          "value": "12",
+          "label": "meses de seguimiento"
+        },
+        {
+          "value": "8",
+          "label": "semanas entre controles"
+        },
+        {
+          "value": "3",
+          "label": "rutas: balón, sutura o cirugía"
+        },
+        {
+          "value": "1",
+          "label": "equipo coordinado"
+        }
+      ]
+    },
+    {
+      "_template": "pestanas",
+      "eyebrow": "Elige tu ruta",
+      "title": "Cada procedimiento,\nsu propio acompañamiento.",
+      "subtitle": "",
+      "anchor": "rutas",
+      "align": "center",
+      "tone": "gray",
+      "variant": "segmented",
+      "items": [
+        {
+          "label": "Balón intragástrico",
+          "kicker": "Endoscópico · sin cirugía",
+          "title": "Balón Orbera®",
+          "body": "Un balón que ocupa parte del estómago y ayuda a comer menos durante un tiempo. El trabajo de fondo es lo que aprendes mientras está: por eso el acompañamiento nutricional es parte del programa.",
+          "points": [],
+          "ally": "Dr. Juan Sebastián Peinado · Gastroenterología y endoscopia bariátrica",
+          "facts": [
+            {
+              "label": "Duración",
+              "value": "6 o 12 meses"
+            },
+            {
+              "label": "Acompañamiento nutricional",
+              "value": "Ingreso + 4 u 8 controles"
+            },
+            {
+              "label": "Frecuencia de controles",
+              "value": "Cada 8 semanas"
+            },
+            {
+              "label": "Valor del programa",
+              "value": "Cotización personalizada"
+            }
+          ],
+          "cta": {
+            "label": "Quiero esta ruta",
+            "href": "/evalua-tu-caso"
+          },
+          "link": {
+            "label": "",
+            "href": ""
+          }
+        },
+        {
+          "label": "Sutura endoscópica",
+          "kicker": "Endoscópico · sin incisiones",
+          "title": "Gastroplastia OverStitch™",
+          "body": "Reduce el tamaño del estómago por vía endoscópica. Un año de seguimiento para que el cambio en el estómago venga acompañado de un cambio en la forma de comer.",
+          "points": [],
+          "ally": "Dr. Juan Sebastián Peinado · Gastroenterología y endoscopia bariátrica",
+          "facts": [
+            {
+              "label": "Duración",
+              "value": "12 meses"
+            },
+            {
+              "label": "Acompañamiento nutricional",
+              "value": "Ingreso + 8 controles"
+            },
+            {
+              "label": "Frecuencia de controles",
+              "value": "Cada 8 semanas"
+            },
+            {
+              "label": "Valor del programa",
+              "value": "Cotización personalizada"
+            }
+          ],
+          "cta": {
+            "label": "Quiero esta ruta",
+            "href": "/evalua-tu-caso"
+          },
+          "link": {
+            "label": "",
+            "href": ""
+          }
+        },
+        {
+          "label": "Cirugía bariátrica",
+          "kicker": "Quirúrgico",
+          "title": "Seguimiento posquirúrgico",
+          "body": "Si te vas a operar o ya te operaste, te acompañamos con seguimiento médico-nutricional de 12 meses: progresión de la dieta, proteína, suplementación y cuidado del músculo.",
+          "points": [],
+          "ally": "Dr. Adolfo Uribe · Cirugía bariátrica",
+          "facts": [
+            {
+              "label": "Duración",
+              "value": "12 meses"
+            },
+            {
+              "label": "Acompañamiento nutricional",
+              "value": "[Número de controles]"
+            },
+            {
+              "label": "Modalidad",
+              "value": "Presencial y virtual"
+            },
+            {
+              "label": "Valor del programa",
+              "value": "Cotización personalizada"
+            }
+          ],
+          "cta": {
+            "label": "Quiero esta ruta",
+            "href": "/evalua-tu-caso"
+          },
+          "link": {
+            "label": "",
+            "href": ""
+          }
+        }
+      ]
+    },
+    {
+      "_template": "tarjetas",
+      "eyebrow": "Cómo te acompañamos",
+      "title": "Antes. Durante. Después.",
+      "subtitle": "",
+      "align": "left",
+      "tone": "white",
+      "items": [
+        {
+          "tag": "Antes",
+          "kicker": "",
+          "title": "Llegar preparado",
+          "body": "Valoración médico-nutricional completa, composición corporal, laboratorios y una preparación que reduce riesgos y mejora la recuperación.",
+          "cta": {
+            "label": "",
+            "href": ""
+          },
+          "tone": "gray"
+        },
+        {
+          "tag": "Primeras semanas",
+          "kicker": "",
+          "title": "Progresar sin afán",
+          "body": "Avanzamos por fases: líquidos, purés, texturas blandas y luego alimentación adaptada. Cada paso según tu tolerancia, no según el calendario.",
+          "cta": {
+            "label": "",
+            "href": ""
+          },
+          "tone": "gray"
+        },
+        {
+          "tag": "Hasta el mes 12",
+          "kicker": "",
+          "title": "Sostener el resultado",
+          "body": "Controles cada 8 semanas con medición, proteína y fuerza para cuidar el músculo, suplementación cuando haga falta y ajustes en Nutrium.",
+          "cta": {
+            "label": "",
+            "href": ""
+          },
+          "tone": "gray"
+        }
+      ]
+    },
+    {
+      "_template": "preguntas",
+      "eyebrow": "Preguntas frecuentes",
+      "title": "Lo que más nos preguntan.",
+      "subtitle": "Si tu pregunta no está aquí, escríbenos y Valentina te ayuda.",
+      "cta": {
+        "label": "Escribir por WhatsApp",
+        "href": "#"
+      },
+      "items": [
+        {
+          "question": "¿Cómo sé si soy candidato?",
+          "answer": "Lo define la valoración: tu peso, tu historia, tus exámenes y lo que ya intentaste. No todas las personas necesitan un procedimiento, y te lo diremos con la misma claridad si no es tu caso."
+        },
+        {
+          "question": "Ya me operé en otro lugar. ¿Puedo entrar al programa?",
+          "answer": "Sí. Empezamos con una valoración de ingreso para ver en qué punto estás y armamos el seguimiento desde ahí."
+        },
+        {
+          "question": "¿Los controles pueden ser virtuales?",
+          "answer": "Algunos sí. Las mediciones de composición corporal requieren ir al consultorio, así que alternamos según la etapa del programa."
+        },
+        {
+          "question": "¿Qué incluye cada control?",
+          "answer": "Medición, revisión de tolerancia y síntomas, ajuste del plan, revisión de suplementación y metas para las siguientes semanas, todo registrado en Nutrium."
+        }
+      ]
+    },
+    {
+      "_template": "franja",
+      "title": "Tu procedimiento merece\nun plan a la altura.",
+      "subtitle": "Agenda tu valoración y diseñamos juntos tu ruta antes, durante y después.",
+      "tone": "navy",
+      "buttons": [
+        {
+          "label": "Agendar valoración",
+          "href": "/evalua-tu-caso",
+          "style": "yellow"
+        }
+      ]
+    }
+  ]
+}
